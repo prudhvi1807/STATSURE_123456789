@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -10,7 +9,7 @@ import { ShieldCheck, BarChart3, FileCheck, Globe } from 'lucide-react';
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-slate-50 selection:bg-orange-100 selection:text-orange-900">
+    <div id="home" className="min-h-screen bg-slate-50 selection:bg-orange-100 selection:text-orange-900">
       <Navbar />
       <Hero />
       
@@ -25,7 +24,7 @@ const App: React.FC = () => {
 
       <Stats />
       
-      <section className="py-28 bg-slate-50">
+      <section id="about" className="py-28 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl font-black text-slate-900 mb-5 tracking-tight uppercase">The Assurance Standard</h2>
@@ -35,7 +34,7 @@ const App: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-16">
             <div className="group text-center">
               <div className="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:bg-blue-600 group-hover:text-white transition-all rotate-3 hover:rotate-0 shadow-lg">
-                <ShieldCheck size={40} />
+                < ShieldCheck size={40} />
               </div>
               <h4 className="text-lg font-bold mb-4 uppercase tracking-wider">Statutory Proof</h4>
               <p className="text-slate-500 text-sm leading-relaxed font-medium">100% legal validity on all documents and certification artifacts issued.</p>

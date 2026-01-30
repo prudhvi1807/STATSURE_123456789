@@ -1,16 +1,16 @@
-
 import React from 'react';
-import { Linkedin, Mail, MapPin, Phone, ShieldCheck, Twitter } from 'lucide-react';
+import { Linkedin, Mail, MapPin, Phone, ShieldCheck, Twitter, Clock } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#001a33] text-blue-100 pt-24 pb-12 font-medium">
+    <footer className="bg-[#001a33] text-blue-100 py-12 font-medium border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
-          <div className="space-y-8">
-            <div className="text-2xl font-black tracking-tighter flex items-center gap-2">
-              <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white">
-                <ShieldCheck size={24} />
+        {/* Top Section: Brand & Socials */}
+        <div className="flex flex-col md:flex-row justify-between items-center mb-10 pb-10 border-b border-white/5 gap-6">
+          <div className="flex items-center gap-4">
+            <div className="text-xl font-black tracking-tighter flex items-center gap-2">
+              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white">
+                <ShieldCheck size={18} />
               </div>
               <div className="flex">
                 <span className="text-white">GET</span>
@@ -18,57 +18,75 @@ const Footer: React.FC = () => {
                 <span className="text-white">SURE</span>
               </div>
             </div>
-            <p className="text-sm leading-loose opacity-70">
-              India's premier statutory assurance firm providing ISO certifications and statutory filings for established corporations and high-growth startups.
+            <div className="h-4 w-px bg-white/20 hidden md:block"></div>
+            <p className="text-xs uppercase tracking-widest font-bold opacity-60">
+              Statutory & ISO Consulting
             </p>
-            <div className="flex space-x-5">
-              <a href="#" className="p-2.5 rounded-xl bg-white/5 text-blue-100 hover:bg-orange-500 hover:text-white transition-all"><Linkedin size={20} /></a>
-              <a href="#" className="p-2.5 rounded-xl bg-white/5 text-blue-100 hover:bg-blue-400 hover:text-white transition-all"><Twitter size={20} /></a>
+          </div>
+          
+          <div className="flex items-center gap-4">
+            <a href="#" className="p-2 rounded-lg bg-white/5 text-blue-100 hover:bg-orange-500 hover:text-white transition-all"><Linkedin size={16} /></a>
+            <a href="#" className="p-2 rounded-lg bg-white/5 text-blue-100 hover:bg-blue-400 hover:text-white transition-all"><Twitter size={16} /></a>
+            <a href="#" className="p-2 rounded-lg bg-white/5 text-blue-100 hover:bg-orange-500 hover:text-white transition-all"><Mail size={16} /></a>
+          </div>
+        </div>
+
+        {/* Middle Section: Addresses (3 Columns) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+          <div>
+            <h4 className="text-orange-500 font-black text-[10px] uppercase tracking-[0.2em] mb-3">Head Office</h4>
+            <p className="text-xs leading-relaxed opacity-70 max-w-[240px]">
+              Plot No-235, BSR TVR Nilayam, Rajarajeshwari Nagar, Kondapur, Hyderabad, Telangana – 500084
+            </p>
+          </div>
+          <div>
+            <h4 className="text-orange-500 font-black text-[10px] uppercase tracking-[0.2em] mb-3">Branch – Kukatpally</h4>
+            <p className="text-xs leading-relaxed opacity-70 max-w-[240px]">
+              Plot No-201, Srihari Nilayam, Sangeet Nagar, Metro Cash and Carry, Kukatpally, Hyderabad – 500071
+            </p>
+          </div>
+          <div>
+            <h4 className="text-orange-500 font-black text-[10px] uppercase tracking-[0.2em] mb-3">Chennai Office</h4>
+            <p className="text-xs leading-relaxed opacity-70 max-w-[240px]">
+              Plot No-6/550, Brindawan Colony, 6th Block, Mugappair West, Chennai, Tamil Nadu – 600037
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom Section: Contact & Hours Bar */}
+        <div className="bg-white/5 rounded-2xl p-6 flex flex-col lg:flex-row justify-between items-center gap-6">
+          <div className="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3">
+            <div className="flex items-center gap-2">
+              <Phone size={14} className="text-orange-500" />
+              <span className="text-[11px] font-bold">HYD: 789 389 77 00</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Phone size={14} className="text-orange-500" />
+              <span className="text-[11px] font-bold">CHN: 984 054 68 67</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Mail size={14} className="text-orange-500" />
+              <span className="text-[11px] font-bold">vcfo@getstatsure.com</span>
             </div>
           </div>
 
-          <div>
-            <h4 className="text-white font-black text-xs uppercase tracking-[0.2em] mb-8">Certifications</h4>
-            <ul className="space-y-5 text-sm opacity-80">
-              <li><a href="#" className="hover:text-orange-400 transition-colors">ISO 9001 (Quality)</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-colors">ISO 27001 (Security)</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-colors">ISO 14001 (Environment)</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-colors">CE Marking</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-colors">GMP Certification</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-black text-xs uppercase tracking-[0.2em] mb-8">Statutory Services</h4>
-            <ul className="space-y-5 text-sm opacity-80">
-              <li><a href="#" className="hover:text-orange-400 transition-colors">MSME/Udyam Reg</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-colors">Shop & Establishment</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-colors">Professional Tax</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-colors">GST Audit & Filings</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-colors">Compliance Audit</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-black text-xs uppercase tracking-[0.2em] mb-8">Auditor Connect</h4>
-            <ul className="space-y-6 text-sm opacity-80">
-              <li className="flex items-start gap-4">
-                <MapPin size={20} className="text-orange-500 flex-shrink-0" />
-                <span className="leading-relaxed">Assurance House, Jubilee Hills, Hyderabad, TS 500033</span>
-              </li>
-              <li className="flex items-center gap-4">
-                <Phone size={20} className="text-orange-500" />
-                <span>1800-STAT-SURE</span>
-              </li>
-              <li className="flex items-center gap-4">
-                <Mail size={20} className="text-orange-500" />
-                <span>assurance@getstatsure.com</span>
-              </li>
-            </ul>
+          <div className="flex flex-wrap justify-center lg:justify-end gap-x-6 gap-y-2 opacity-60">
+            <div className="flex items-center gap-2">
+              <Clock size={12} />
+              <span className="text-[10px] uppercase tracking-tighter">Mon–Fri: 10:00 am – 7:00 pm</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Clock size={12} />
+              <span className="text-[10px] uppercase tracking-tighter">Sat: 10:00 am – 2:00 pm</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Clock size={12} />
+              <span className="text-[10px] uppercase tracking-tighter font-black text-orange-400">Sun: Holiday</span>
+            </div>
           </div>
         </div>
         
-        <div className="pt-12 border-t border-white/10 text-center text-[10px] font-black uppercase tracking-[0.3em] opacity-40">
+        <div className="mt-8 text-center text-[9px] font-black uppercase tracking-[0.4em] opacity-30">
           <p>© 2024 GETSTATSURE ASSURANCE PVT LTD. ALL STATUTORY RIGHTS RESERVED.</p>
         </div>
       </div>

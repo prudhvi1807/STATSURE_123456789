@@ -1,8 +1,47 @@
-
-import React from 'react';
-import { ShieldCheck, Award, Zap, ChevronRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { ShieldCheck, Zap } from 'lucide-react';
+import { SERVICES, WHATSAPP_NUMBER } from '../constants';
 
 const Hero: React.FC = () => {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    interest: SERVICES[0].title
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const { fullName, email, phone, interest } = formData;
+    
+    if (!fullName || !email || !phone || !interest) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    const message = `New consultation request
+
+Full Name: ${fullName}
+Email: ${email}
+Phone: ${phone}
+Interested In: ${interest}`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const scrollToServices = () => {
+    document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="relative gradient-bg pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
       {/* Decorative Circles */}
@@ -29,7 +68,10 @@ const Hero: React.FC = () => {
               <button className="px-10 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-xl font-extrabold text-lg shadow-xl shadow-orange-900/20 transition-all flex items-center justify-center">
                 Get Started Now
               </button>
-              <button className="px-10 py-4 bg-blue-400/10 hover:bg-blue-400/20 text-white rounded-xl font-extrabold text-lg border border-white/30 backdrop-blur-sm transition-all">
+              <button 
+                onClick={scrollToServices}
+                className="px-10 py-4 bg-blue-400/10 hover:bg-blue-400/20 text-white rounded-xl font-extrabold text-lg border border-white/30 backdrop-blur-sm transition-all"
+              >
                 View All Services
               </button>
             </div>
@@ -53,29 +95,60 @@ const Hero: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="bg-white rounded-2xl shadow-2xl p-8 lg:p-10 max-w-md mx-auto relative z-10">
               <h3 className="text-2xl font-bold text-slate-800 mb-8 text-center">Free Consultation</h3>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label className="block text-sm font-bold text-slate-600 mb-2">Full Name</label>
-                  <input type="text" placeholder="John Doe" className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all" />
+                  <input 
+                    type="text" 
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    placeholder="John Doe" 
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all" 
+                    required
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-slate-600 mb-2">Email Address</label>
-                  <input type="email" placeholder="john@company.com" className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all" />
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="john@company.com" 
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all" 
+                    required
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-slate-600 mb-2">Phone Number</label>
-                  <input type="tel" placeholder="+91 98765 43210" className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all" />
+                  <input 
+                    type="tel" 
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder="+91 98765 43210" 
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all" 
+                    required
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-slate-600 mb-2">Interested In</label>
-                  <select className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white font-medium">
-                    <option>ISO 9001 Certification</option>
-                    <option>ISO 27001 Registration</option>
-                    <option>MSME Udyam Filing</option>
-                    <option>Statutory Audit Filing</option>
+                  <select 
+                    name="interest"
+                    value={formData.interest}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white font-medium"
+                    required
+                  >
+                    {SERVICES.map((service) => (
+                      <option key={service.id} value={service.title}>
+                        {service.title}
+                      </option>
+                    ))}
                   </select>
                 </div>
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-blue-200 transition-all">
+                <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-blue-200 transition-all">
                   Request Callback
                 </button>
                 <p className="text-[10px] text-center text-slate-400">
