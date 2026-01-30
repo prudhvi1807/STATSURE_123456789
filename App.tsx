@@ -34,7 +34,7 @@ const App: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-16">
             <div className="group text-center">
               <div className="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:bg-blue-600 group-hover:text-white transition-all rotate-3 hover:rotate-0 shadow-lg">
-                < ShieldCheck size={40} />
+                <ShieldCheck size={40} />
               </div>
               <h4 className="text-lg font-bold mb-4 uppercase tracking-wider">Statutory Proof</h4>
               <p className="text-slate-500 text-sm leading-relaxed font-medium">100% legal validity on all documents and certification artifacts issued.</p>

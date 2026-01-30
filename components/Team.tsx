@@ -34,7 +34,7 @@ const Team: React.FC = () => {
 
       {/* Profile Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md animate-in fade-in duration-300 text-left">
+        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md animate-in fade-in duration-300">
           <div className="bg-white w-full max-w-3xl rounded-[2.5rem] shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300 max-h-[90vh] flex flex-col border border-white/20">
             {/* Modal Header */}
             <div className="bg-blue-600 p-10 text-white relative shrink-0">
@@ -49,7 +49,7 @@ const Team: React.FC = () => {
             </div>
             
             {/* Modal Content */}
-            <div className="p-10 md:p-14 overflow-y-auto space-y-12 bg-white">
+            <div className="p-10 md:p-14 overflow-y-auto space-y-12 bg-white text-left">
               {/* SECTION 1 */}
               <div>
                 <div className="flex items-center gap-4 mb-6">
@@ -106,6 +106,7 @@ const Team: React.FC = () => {
               <div>
                 <div className="flex items-center gap-4 mb-6">
                    <div className="w-10 h-10 bg-green-50 text-green-600 rounded-xl flex items-center justify-center">
+                      {/* Fixed typo: changed TrendiningUp to TrendingUp */}
                       <TrendingUp size={20} />
                    </div>
                    <h4 className="text-xl font-black text-slate-900 uppercase tracking-tight">Leadership at StatSure</h4>
